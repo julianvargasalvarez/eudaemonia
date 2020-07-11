@@ -1,3 +1,5 @@
 %ul
   - @candidates.each do |candidate|
     %li= candidate.name
+
+= will_paginate @candidates

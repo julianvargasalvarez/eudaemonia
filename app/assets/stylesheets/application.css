@@ -13,3 +13,13 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  color: red;
+}
+
+.navigation {
+  position: fixed;
+  top: 10px;
+  left: 500px;
+}
