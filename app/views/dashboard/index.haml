@@ -1,5 +1,30 @@
-%ul
-  - @candidates.each do |candidate|
-    %li= candidate.name
+.container
+  %article.column
+    %h2 Pending
+    .dropzone
+      - @candidates.where(status: 'pending').each do |candidate|
+        %article.candidate
+          %h3= candidate.name
+          = form_for(candidate) do |f|
+            = hidden_field :candidate, :status, value: 'interviewed'
+            = f.submit 'Mark as interviewed'
 
-= will_paginate @candidates
+  %article.column
+    %h2 Interviewed
+    .dropzone
+      - @candidates.where(status: 'interviewed').each do |candidate|
+        %article.candidate
+          %h3= candidate.name
+          = form_for(candidate) do |f|
+            = hidden_field :candidate, :status, value: 'hired'
+            = f.submit 'Mark as hired'
+
+  %article.column
+    %h2 Hired
+    .dropzone
+      - @candidates.where(status: 'hired').each do |candidate|
+        %article.candidate
+          %h3= candidate.name
+          = form_for(candidate) do |f|
+            = hidden_field :candidate, :status, value: 'archived'
+            = f.submit 'Mark as archived'
