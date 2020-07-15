@@ -2,32 +2,32 @@
   %article.column
     %h2 Pending
     .dropzone
-      - @candidates.where(status: 'pending').order(id: :asc).page(params['pending']).per(3).each do |candidate|
+      - @pending.each do |candidate|
         %article.candidate
           %h3= candidate.name
           = form_for(candidate) do |f|
             = hidden_field :candidate, :status, value: 'interviewed'
             = f.submit 'Mark as interviewed'
-      = paginate @candidates.where(status: 'pending').order(id: :asc), param_name: 'pending'
+      = paginate @pending, param_name: 'pending'
 
   %article.column
     %h2 Interviewed
     .dropzone
-      - @candidates.where(status: 'interviewed').sort(id: :asc).page(params['interviewed']).per(3).each do |candidate|
+      - @interviewed.each do |candidate|
         %article.candidate
           %h3= candidate.name
           = form_for(candidate) do |f|
             = hidden_field :candidate, :status, value: 'hired'
             = f.submit 'Mark as hired'
-      = paginate @candidates.where(status: 'interviewed').sort(id: :asc), param_name: 'interviewed'
+      = paginate @interviewed, param_name: 'interviewed'
 
   %article.column
     %h2 Hired
     .dropzone
-      - @candidates.where(status: 'hired').sort(id: :asc).page(params['hired']).per(3).each do |candidate|
+      - @hired.each do |candidate|
         %article.candidate
           %h3= candidate.name
           = form_for(candidate) do |f|
             = hidden_field :candidate, :status, value: 'archived'
             = f.submit 'Mark as archived'
-      = paginate @candidates.where(status: 'hired').sort(id: :asc), param_name: 'hired'
+      = paginate @hired, param_name: 'hired'
