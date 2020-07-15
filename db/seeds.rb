@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+1000.times do |i|
+  Candidate.create(name: "Candidate #{i}", status: 'pending')
+end
+User.create!(email: 'user@mail.com', password: '12345678')
