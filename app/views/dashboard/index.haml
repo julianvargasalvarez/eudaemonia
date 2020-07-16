@@ -2,13 +2,11 @@
   %article.column
     %h2 Pending
     .dropzone
-      - @pending.each do |candidate|
-        %article.candidate
-          %h3= candidate.name
-          = form_for(candidate) do |f|
-            = hidden_field :candidate, :status, value: 'interviewed'
-            = f.submit 'Mark as interviewed'
-      = paginate @pending, param_name: 'pending'
+      %div{data: {controller: 'infinite-scroll', action: 'scroll@window->infinite-scroll#scroll'}}
+        %div{data: {target: 'infinite-scroll.entries'}}
+          = render partial: "candidate", collection: @pending, locals: { next_status: 'interviewed'}
+        %div{data: {target: 'infinite-scroll.pagination'}}
+          = paginate @pending, param_name: 'pending'
 
   %article.column
     %h2 Interviewed
