@@ -10,7 +10,7 @@
 
   %article.column
     %h2 Interviewed
-    .dropzone
+    .dropzone{data: {controller: 'drag-and-drop', action: 'dragover->drag-and-drop#dragOver dragenter->drag-and-drop#dragEnter dragleave->drag-and-drop#dragLeave drop->drag-and-drop#dragDrop'}}
       - @interviewed.each do |candidate|
         %article.candidate
           %h3= candidate.name

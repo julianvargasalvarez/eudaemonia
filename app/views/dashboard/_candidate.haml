@@ -1,0 +1,5 @@
+%article.candidate{draggable: 'true', data: {controller: 'drag-and-drop', action: 'dragstart->drag-and-drop#dragStart dragend->drag-and-drop#dragEnd'}}
+  %h3= candidate.name
+  = form_for(candidate) do |f|
+    = hidden_field :candidate, :status, value: next_status
+    = f.submit "Mark as #{next_status}"
