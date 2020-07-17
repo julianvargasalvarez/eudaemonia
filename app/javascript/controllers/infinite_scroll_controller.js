@@ -17,7 +17,6 @@ export default class extends Controller {
 
     console.log(Math.round(window.pageYOffset), height - window.innerHeight)
     if(Math.round(window.pageYOffset) == height - window.innerHeight) {
-      console.log("loading more")
       this.loadMore(url)
     }
   }

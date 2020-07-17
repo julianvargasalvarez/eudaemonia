@@ -1,7 +1,7 @@
 .container
   %article.column
     %h2 Pending
-    .dropzone
+    .drag-item{data: {controller: 'drag-item', action: 'dragover->drag-item#dragover dragenter->drag-item#dragenter dragleave->drag-item#dragleave drop->drag-item#drop'}}
       %div{data: {controller: 'infinite-scroll', action: 'scroll@window->infinite-scroll#scroll'}}
         %div{data: {target: 'infinite-scroll.entries'}}
           = render partial: "candidate", collection: @pending, locals: { next_status: 'interviewed'}
@@ -10,7 +10,7 @@
 
   %article.column
     %h2 Interviewed
-    .dropzone{data: {controller: 'drag-and-drop', action: 'dragover->drag-and-drop#dragOver dragenter->drag-and-drop#dragEnter dragleave->drag-and-drop#dragLeave drop->drag-and-drop#dragDrop'}}
+    .drag-item{data: {controller: 'drag-item', action: 'dragover->drag-item#dragover dragenter->drag-item#dragenter drop->drag-item#drop'}}
       - @interviewed.each do |candidate|
         %article.candidate
           %h3= candidate.name
@@ -21,7 +21,7 @@
 
   %article.column
     %h2 Hired
-    .dropzone
+    .drag-item{data: {controller: 'drag-item', action: 'dragover->drag-item#dragover dragenter->drag-item#dragenter drop->drag-item#drop'}}
       - @hired.each do |candidate|
         %article.candidate
           %h3= candidate.name
