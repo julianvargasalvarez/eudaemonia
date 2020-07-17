@@ -1,30 +1,4 @@
 .container
-  %article.column{data: {controller: 'infinite-scroll', action: 'scroll->infinite-scroll#scroll'}}
-    %h2 Pending
-    .drag-item{data: {controller: 'drag-item', action: 'dragover->drag-item#dragover dragenter->drag-item#dragenter dragleave->drag-item#dragleave drop->drag-item#drop'}}
-      %div{data: {target: 'infinite-scroll.entries'}}
-        = render partial: "candidate", collection: @pending, locals: { next_status: 'interviewed'}
-      %div{data: {target: 'infinite-scroll.pagination'}}
-        = paginate @pending, param_name: 'pending'
-
-  %article.column
-    %h2 Interviewed
-    .drag-item{data: {controller: 'drag-item', action: 'dragover->drag-item#dragover dragenter->drag-item#dragenter drop->drag-item#drop'}}
-      - @interviewed.each do |candidate|
-        %article.candidate
-          %h3= candidate.name
-          = form_for(candidate) do |f|
-            = hidden_field :candidate, :status, value: 'hired'
-            = f.submit 'Mark as hired'
-      = paginate @interviewed, param_name: 'interviewed'
-
-  %article.column
-    %h2 Hired
-    .drag-item{data: {controller: 'drag-item', action: 'dragover->drag-item#dragover dragenter->drag-item#dragenter drop->drag-item#drop'}}
-      - @hired.each do |candidate|
-        %article.candidate
-          %h3= candidate.name
-          = form_for(candidate) do |f|
-            = hidden_field :candidate, :status, value: 'archived'
-            = f.submit 'Mark as archived'
-      = paginate @hired, param_name: 'hired'
+  = render partial: "column", locals: {title: "Pending",     collection: @pending,     current_status: 'pending',     next_status: 'interviewed'}
+  = render partial: "column", locals: {title: "Interviewed", collection: @interviewed, current_status: 'interviewed', next_status: 'hired'}
+  = render partial: "column", locals: {title: "Hired",       collection: @hired,       current_status: 'hired',       next_status: 'archived'}

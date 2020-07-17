@@ -1,0 +1,7 @@
+%article.column{data: {controller: 'infinite-scroll', action: 'scroll->infinite-scroll#scroll'}}
+  %h2= title
+  .drag-item{data: {controller: 'drag-item', action: 'dragover->drag-item#dragover dragenter->drag-item#dragenter dragleave->drag-item#dragleave drop->drag-item#drop'}}
+    %div{data: {target: 'infinite-scroll.entries'}}
+      = render partial: "candidate", collection: collection, locals: { next_status: next_status}
+    %div{data: {target: 'infinite-scroll.pagination'}}
+      = paginate collection, param_name: current_status
