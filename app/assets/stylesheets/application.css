@@ -94,8 +94,12 @@ header, footer, article, nav, aside {
 
 .column {
   flex-grow: 1;
-  height: 100%;
+  min-height: 95vh;
+  max-height: 95vh;
+  height: 95vh;
+  overflow: auto;
   background-color: light-grey;
+  border: 2px darkgrey solid;
 }
 
 .column + .column {

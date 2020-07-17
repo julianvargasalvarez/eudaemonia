@@ -1,12 +1,11 @@
 .container
-  %article.column
+  %article.column{data: {controller: 'infinite-scroll', action: 'scroll->infinite-scroll#scroll'}}
     %h2 Pending
     .drag-item{data: {controller: 'drag-item', action: 'dragover->drag-item#dragover dragenter->drag-item#dragenter dragleave->drag-item#dragleave drop->drag-item#drop'}}
-      %div{data: {controller: 'infinite-scroll', action: 'scroll@window->infinite-scroll#scroll'}}
-        %div{data: {target: 'infinite-scroll.entries'}}
-          = render partial: "candidate", collection: @pending, locals: { next_status: 'interviewed'}
-        %div{data: {target: 'infinite-scroll.pagination'}}
-          = paginate @pending, param_name: 'pending'
+      %div{data: {target: 'infinite-scroll.entries'}}
+        = render partial: "candidate", collection: @pending, locals: { next_status: 'interviewed'}
+      %div{data: {target: 'infinite-scroll.pagination'}}
+        = paginate @pending, param_name: 'pending'
 
   %article.column
     %h2 Interviewed

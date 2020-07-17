@@ -11,12 +11,9 @@ export default class extends Controller {
 
     let url = next_page.url
 
-    var body = document.body,
-      html = document.documentElement
-    var height = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight)
+    const { scrollTop, scrollHeight, clientHeight, offsetHeight } = this.element
 
-    console.log(Math.round(window.pageYOffset), height - window.innerHeight)
-    if(Math.round(window.pageYOffset) == height - window.innerHeight) {
+    if(Math.round(scrollTop) == scrollHeight - clientHeight) {
       this.loadMore(url)
     }
   }
