@@ -9,7 +9,7 @@ export default class extends Controller {
 
     if(next_page == null) { return }
 
-    let url = next_page.url
+    let url = next_page.href
 
     const { scrollTop, scrollHeight, clientHeight, offsetHeight } = this.element
 
@@ -24,8 +24,9 @@ export default class extends Controller {
       url: url,
       dataType: 'json',
       success: (data) => {
-        this.entriesTarget.insertAdjacentHTML('beforeend', data.entries)
-        this.paginationTarget.innerHTML	= data.pagination
+        console.log(this.data.get("entities"), data)
+        this.entriesTarget.insertAdjacentHTML('beforeend', data[this.data.get("entities")].entries)
+        this.paginationTarget.innerHTML	= data[this.data.get("entities")].pagination
       }
     })
   }

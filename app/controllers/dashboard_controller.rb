@@ -10,8 +10,19 @@ class DashboardController < ApplicationController
       format.html
       format.json {
         render json: {
-          entries: render_to_string(partial: "candidate", collection: @pending, locals: {next_status: 'interviewed'}, formats: [:html]),
-          pagination: view_context.paginate(@pending, param_name: 'pending') }
+          pending: {
+            entries: render_to_string(partial: "candidate", collection: @pending, locals: {next_status: 'interviewed'}, formats: [:html]),
+            pagination: view_context.paginate(@pending, param_name: 'pending')
+          },
+          interviewed: {
+            entries: render_to_string(partial: "candidate", collection: @interviewed, locals: {next_status: 'hired'}, formats: [:html]),
+            pagination: view_context.paginate(@interviewed, param_name: 'interviewed')
+          },
+          interviewed: {
+            entries: render_to_string(partial: "candidate", collection: @hired, locals: {next_status: 'archived'}, formats: [:html]),
+            pagination: view_context.paginate(@hired, param_name: 'hired')
+          }
+        }
       }
     end
   end
