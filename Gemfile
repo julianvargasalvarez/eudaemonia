@@ -27,3 +27,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
+
+gem "redis", "~> 4.2"
+gem "cable_ready", "~> 4.3"
+gem "stimulus_reflex", "~> 3.2"

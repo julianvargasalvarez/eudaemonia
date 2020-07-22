@@ -1,0 +1,4 @@
+= form_for(@candidate, url: candidate_index_path) do |f|
+  = f.text_field :name
+  = f.hidden_field :status
+  = f.submit "Guardar"

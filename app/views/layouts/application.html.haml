@@ -13,9 +13,8 @@
       %nav.main-nav
         %ul.navigation
           %li= link_to("Dashboard con Stimulus", dashboard_con_stimulus_path, data: {:"turbolinks-action" => "replace"})
-          %li= link_to("Dashboard con Stimulus Reflex", dashboard_con_stimulus_reflex_path, data: {:"turbolinks-action" => "replace"})
-          %li= link_to("Dashboard con React Serverside rendering", dashboard_con_react_serverside_rendering_path, data: {:"turbolinks-action" => "replace"})
-          %li= link_to("Dashboard con React Clientside rendering", dashboard_con_react_clientside_rendering_path, data: {:"turbolinks-action" => "replace"})
+          %li= link_to("Dashboard con React", dashboard_con_react_path, data: {:"turbolinks-action" => "replace"})
+          %li= link_to("Nuevo candidato", new_candidate_path, data: {:"turbolinks-action" => "replace"})
           %li= link_to("Reports", reports_path, data: {:"turbolinks-action" => "replace"})
       %p.notice= notice
       %p.alert= alert

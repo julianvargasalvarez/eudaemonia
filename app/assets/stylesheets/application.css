@@ -112,6 +112,7 @@ header, footer, article, nav, aside {
   background-color: peru;
   cursor: pointer;
   position: relative;
+  margin-top: 7px;
 }
 
 .hold {
@@ -125,4 +126,9 @@ header, footer, article, nav, aside {
 
 .invisible {
   display: none;
+}
+.drop-zone {
+  background-color: grey;
+  min-height: 50px;
+  padding: 5px;
 }

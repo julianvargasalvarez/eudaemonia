@@ -2,9 +2,9 @@ class DashboardController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @pending =     Candidate.where(status: 'pending'    ).order(id: :asc).page(params['pending']    ).per(5)
-    @interviewed = Candidate.where(status: 'interviewed').order(id: :asc).page(params['interviewed']).per(5)
-    @hired =       Candidate.where(status: 'hired'      ).order(id: :asc).page(params['hired']      ).per(5)
+    @pending =     Candidate.where(status: 'pending'    ).order(updated_at: :desc).page(params['pending']    ).per(5)
+    @interviewed = Candidate.where(status: 'interviewed').order(updated_at: :desc).page(params['interviewed']).per(5)
+    @hired =       Candidate.where(status: 'hired'      ).order(updated_at: :desc).page(params['hired']      ).per(5)
 
     respond_to do |format|
       format.html
