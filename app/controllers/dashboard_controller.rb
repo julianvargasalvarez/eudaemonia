@@ -11,7 +11,7 @@ class DashboardController < ApplicationController
       format.json {
         render json: {
           pending: {
-            entries: render_to_string(partial: "candidate", collection: @pending, locals: {next_status: 'interviewed'}, formats: [:html]),
+            entries: render_to_string(component: "Candidate", collection: @pending, locals: {next_status: 'interviewed'}, formats: [:html]),
             pagination: view_context.paginate(@pending, param_name: 'pending')
           },
           interviewed: {

@@ -1,5 +1,1 @@
-%article.candidate{draggable: 'true', data: {id: candidate.name, controller: 'drag-item', action: 'dragstart->drag-item#dragstart dragend->drag-item#dragend'}}
-  %h3= candidate.name
-  = form_for(candidate) do |f|
-    = hidden_field :candidate, :status, value: next_status
-    = f.submit "Mark as #{next_status}"
+= react_component("Candidate", {name: candidate.name, status: candidate.status})
